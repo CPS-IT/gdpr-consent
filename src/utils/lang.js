@@ -1,4 +1,4 @@
-const availableLanguages = "en,fr",
+const availableLanguages = "de,en,fr",
 	defaultLanguage = "en";
 
 export function getLanguage() {
@@ -24,9 +24,12 @@ export function getLocale() {
 		navigator.systemLanguage || navigator.userLang || null,
 		userLanguage = lang ? lang.substr(0, 2) : null;
 
-	if (userLanguage === "fr") {
-		return "fr_FR";
-	} else {
-		return "en_US";
+	switch (userLanguage) {
+		case "de":
+			return "de_DE";
+		case "fr":
+			return "fr_FR";
+		default:
+			return "en_US";
 	}
 }

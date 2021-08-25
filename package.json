@@ -16,6 +16,7 @@
 		"server": "webpack serve --mode development --config webpack.config.js --hot --open",
 		"build": "webpack --mode production --config webpack.config.js --progress"
 	},
+	"main": "src/index.js",
 	"files": [
 		"src/**/*",
 		"build/**/*"

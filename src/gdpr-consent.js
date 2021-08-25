@@ -21,6 +21,7 @@ const GDPRConsent = {
 	parameters: {},
 	reloadThePage: false,
 	alreadyLaunch: 0,
+	languageLoaded: false,
 	init: function(params) {
 		"use strict";
 
@@ -73,7 +74,10 @@ const GDPRConsent = {
 		}
 
 		// Load language and services
-		GDPRConsent.lang = languages.getCurrent();
+		if (!GDPRConsent.languageLoaded) {
+			GDPRConsent.lang = languages.getCurrent();
+			GDPRConsent.languageLoaded = true;
+		}
 		GDPRConsent.services = services.getServices(GDPRConsent.user);
 
 		// eslint-disable-next-line one-var

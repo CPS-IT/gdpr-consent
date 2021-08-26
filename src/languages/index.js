@@ -4,8 +4,8 @@ import en from "./lang.en";
 import { getLanguage } from "../utils/lang";
 
 export default {
-	getCurrent: () => {
-		switch (getLanguage()) {
+	getCurrent: (languageDetectionMode) => {
+		switch (getLanguage(languageDetectionMode)) {
 			case "de":
 				return de;
 			case "fr":

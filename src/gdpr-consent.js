@@ -22,6 +22,7 @@ const GDPRConsent = {
 	reloadThePage: false,
 	alreadyLaunch: 0,
 	languageLoaded: false,
+	languageDetectionMode: 'navigator',
 	init: function(params) {
 		"use strict";
 
@@ -75,7 +76,7 @@ const GDPRConsent = {
 
 		// Load language and services
 		if (!GDPRConsent.languageLoaded) {
-			GDPRConsent.lang = languages.getCurrent();
+			GDPRConsent.lang = languages.getCurrent(GDPRConsent.languageDetectionMode);
 			GDPRConsent.languageLoaded = true;
 		}
 		GDPRConsent.services = services.getServices(GDPRConsent.user);

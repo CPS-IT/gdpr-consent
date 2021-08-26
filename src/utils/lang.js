@@ -1,14 +1,20 @@
 const availableLanguages = "de,en,fr",
 	defaultLanguage = "en";
 
-export function getLanguage() {
+export function getLanguage(languageDetectionMode) {
 	"use strict";
 
-	if (!navigator) { return "en"; }
+	let lang;
 
-	let lang = navigator.language || navigator.browserLanguage ||
-		navigator.systemLanguage || navigator.userLang || null,
-		userLanguage = lang ? lang.substr(0, 2) : null;
+	if ('document' === languageDetectionMode) {
+		lang = document.documentElement.lang;
+	} else if (!navigator) {
+		return "en";
+	} else {
+		lang = navigator.language || navigator.browserLanguage || navigator.systemLanguage || navigator.userLang || null;
+	}
+
+	let userLanguage = lang ? lang.substr(0, 2) : null;
 
 	if (availableLanguages.indexOf(userLanguage) === -1) {
 		return defaultLanguage;

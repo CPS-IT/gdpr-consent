@@ -10,9 +10,12 @@ export default (GDPRConsentUser) => ({
 	cookies: ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
 	js: function () {
 		'use strict';
+
 		if (GDPRConsentUser.matomoId === undefined) {
 			return;
 		}
+
+		var self = this;
 
 		window._paq = window._paq || [];
 		window._paq.push(['setSiteId', GDPRConsentUser.matomoId]);
@@ -56,7 +59,7 @@ export default (GDPRConsentUser) => ({
 
 				// if cookie starts like a piwik one, register it
 				if (cookieName.indexOf('_pk_') === 0) {
-					this.cookies.push(cookieName);
+					self.cookies.push(cookieName);
 				}
 			}
 		}, 100);
